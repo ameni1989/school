@@ -1,0 +1,49 @@
+<div class="container-fluid ">
+    <div class="row mb-2 mt-2">
+        <div class="col">
+                <h3 class="text-orange text-start">Formulaire d'ajout d'un agent</h3>
+        </div>
+    </div>
+ 
+    <div class="row mt-2 justify-content-center">
+        <div class="col-12">
+            <form>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input  name="nom" [(ngModel)]="nom" type="text" id="form6Example1" class="form-control" />
+                      <label class="form-label" for="form6Example1">Nom et Prenom</label>
+                    </div>
+                  </div>
+                
+                </div>
+                <div class="row mb-2">
+                    <div class="col-4">
+                        <div data-mdb-input-init class="form-outline">
+                          <input name="tel" [(ngModel)]="tel"  type="tel" id="form6Example1" class="form-control" />
+                          <label class="form-label" for="form6Example1">Telephone </label>
+                        </div>
+                      </div>
+                   
+                    
+                  </div>
+                
+                     
+             
+
+
+              
+              
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="button" (click)="creeagent()" class="btn btn-warning btn-block mb-4 me-3">Confirmer l'ajout</button>
+                
+                <button routerLink="/ecole/agent/listagent" data-mdb-ripple-init type="reset" class="btn btn-light btn-block mb-4">Annuler l'ajout</button>
+
+            </form>
+        </div>
+    </div>
+
+  
+    
+</div>

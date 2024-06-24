@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row justify-content-around mt-5">
+    <div class="col-4">
+      <div class="row mb-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="01/01/2000"
+          [(ngModel)]="date"
+        />
+      </div>
+      <div class="row mb-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="7"
+          [(ngModel)]="heure"
+        />
+      </div>
+      <div class="row mb-2">
+        <div data-mdb-input-init class="form-control">
+          <select
+            (change)="getagent()"
+            [(ngModel)]="idagent"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option *ngFor="let item of agents" [value]="item._id">
+              <p>{{ item.nomprenom }}</p>
+            </option>
+          </select>
+          <label class="form-label" for="form6Example1">Agent </label>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <button (click)="appelerDeuxFonctions()" class="btn btn-warning">
+          afficher
+        </button>
+      </div>
+    </div>
+    <div class="col-4 border border-2">
+      <mat-tab-group class="bg-orange">
+        <mat-tab label="tous">
+          <div class="page" *ngIf="instance">
+            <p>date: {{ instance[0].date }}</p>
+            <p>heure: {{ instance[0].circuit.heure }}</p>
+            <p>circuit: {{ instance[0].circuit.nom }}</p>
+            <p>type: {{ instance[0].circuit.type }}</p>
+
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                choisir un arrêt
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <ng-container *ngFor="let a of instance[0].circuit.idarrets">
+                  <li *ngFor="let arret of a" [value]="arret.idarret">
+                    <a
+                      class="dropdown-item lien"
+                      (click)="
+                        listeleve(
+                          instance[0].circuit.type,
+                          instance[0].circuit.nom,
+                          arret.idarret,
+                          arret.nomarret,
+                          instance[0].circuit.heure
+                        )
+                      "
+                    >
+                      {{ arret.nomarret }}
+                    </a>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+            <ol *ngIf="existe">
+              <li *ngFor="let eleve of eleves">
+                {{ eleve.nomprenom }}
+                <img
+                  [src]="'http://127.0.0.1:3000/getimage/' + eleve.image"
+                  alt=""
+                  class="img-eleve"
+                />
+                <button (click)="valider(eleve._id)" class="btn btn-warning">
+                  {{ instance[0].circuit.type }}
+                </button>
+                <button (click)="sabsenter(eleve._id)" class="btn btn-warning">
+                  absent
+                </button>
+              </li>
+            </ol>
+          </div>
+        </mat-tab>
+        <mat-tab label="validés">
+          <div class="page" *ngIf="instance">
+            <ol>
+              <li *ngFor="let eleve of leseleves">
+                {{ eleve.nomprenom }}
+              </li>
+            </ol>
+          </div>
+        </mat-tab>
+        <mat-tab label="absents">
+          <div class="page" *ngIf="instance">
+            <ol>
+              <li *ngFor="let eleve of leseleves2">
+                {{ eleve.nomprenom }}
+              </li>
+            </ol>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

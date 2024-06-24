@@ -1,0 +1,151 @@
+<div class="container-fluid">
+  <div class="row mb-2 mt-2">
+    <div class="col-lg-6 col-8">
+      <h3 class="text-orange text-start">Agents</h3>
+    </div>
+    <div class="col-lg-2 col-4">
+      <img src="assets/images/agent.png" alt="" class="img-fluid" />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-lg-6 col-8">
+      <button
+        class="btn btn-warning text-white fw-bold"
+        routerLink="/ecole/agent/ajoutagent"
+      >
+        <i class="bi bi-person-plus fs-4 me-2"></i>
+        <span>Ajouter un agent</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="table-responsive-sm">
+        <table class="table align-middle mb-2 bg-white">
+          <thead class="bg-warning text-white">
+            <tr>
+              <th>Nom et Prenom</th>
+              <th>Telephone</th>
+
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let item of agents
+                  | pipe : _base.chercher
+                  | paginate
+                    : {
+                        id: 'pagination1',
+                        itemsPerPage: 3,
+                        currentPage: paginate
+                      };
+                let i = index
+              "
+            >
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="ms-3">
+                    <p class="fw-bold">{{ item.nomprenom }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p class="fw-normal">{{ item.telephone }}</p>
+              </td>
+
+              <td>
+                <button
+                  (click)="agentadmodifier(item._id)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  type="button"
+                  class="btn btn-warning rounded-circle ps-2 pe-2 me-2"
+                >
+                  <i class="bi bi-person-gear fs-4 fw-bold"></i>
+                </button>
+                <button
+                  (click)="supprimer(item._id)"
+                  type="button"
+                  class="btn btn-light rounded-circle ps-2 pe-2"
+                >
+                  <i class="bi bi-person-dash fs-4 fw-bold"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pagination-controls
+        class="pag text-end"
+        id="pagination1"
+        (pageChange)="paginate = $event"
+        previousLabel="Précédent"
+        nextLabel="Suivant"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">
+          Modification Agent
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body bg-warning">
+        <div class="row pt-3 pb-3">
+          <div class="col text-dark">
+            nom prenom
+            <input
+              type="text"
+              placeholder="nom"
+              class="me-1 form-control mb-2"
+              [(ngModel)]="nvagent.nomprenom"
+            />
+          </div>
+          <div class="col text-dark">
+            telephone
+            <input
+              [(ngModel)]="nvagent.telephone"
+              class="me-1 form-control mb-2"
+              type="text"
+              placeholder="telephone"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          annuler
+        </button>
+        <button
+          (click)="modifieragent()"
+          type="button"
+          class="btn btn-warning"
+          data-bs-dismiss="modal"
+        >
+          confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

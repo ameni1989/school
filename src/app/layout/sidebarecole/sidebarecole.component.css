@@ -1,0 +1,28 @@
+.left-s{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    
+
+}
+
+.hover-bg:hover {
+    background-color: #ffbc00 !important; 
+    color: black !important;
+    font-weight: 700;
+}
+/* .side-nav-link:active {
+    background-color: #ffbc00 !important;
+    color: black !important;
+} */
+.side-nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .side-nav-link:target{
+    background-color: #ffbc00 !important;
+   }
+
+   /* Styles pour les conteneurs de liens ouverts */
+/* .sidenav-item .side-nav-link :active {
+    background-color:  #ffbc00 !important; /* Couleur de fond après le clic */
+    /* color: black !important; 
+  } */
+

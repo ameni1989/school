@@ -1,0 +1,65 @@
+<div class="container-fluid ">
+    <div class="row mb-2 mt-2">
+        <div class="col">
+                <h3 class="text-orange text-start">Formulaire d'ajout d'un bus</h3>
+        </div>
+    </div>
+ 
+    <div class="row mt-2 justify-content-center">
+        <div class="col-12">
+            <form>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-2">
+                  <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                      <input name="marque" [(ngModel)]="marque" type="text" id="form6Example1" class="form-control" />
+                      <label class="form-label" for="form6Example1">Marque</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                      <input name="serie" [(ngModel)]="serie" type="text" id="form6Example1" class="form-control" />
+                      <label class="form-label" for="form6Example1">Numero de série </label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                      <input name="couleur" [(ngModel)]="couleur" type="text" id="form6Example1" class="form-control" />
+                      <label class="form-label" for="form6Example1">Couleur </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-4 col-lg-2">
+                        <div data-mdb-input-init class="form-outline">
+                          <input name="place" [(ngModel)]="place" type="number" id="form6Example1" class="form-control" />
+                          <label class="form-label" for="form6Example1">Nombre de place </label>
+                        </div>
+                      </div>
+                    <div class="col-4 col-lg-2">
+                        <div data-mdb-input-init class="form-outline">
+                          <input name="surcharge" [(ngModel)]="surcharge" type="number" id="form6Example1" class="form-control" />
+                          <label class="form-label" for="form6Example1">Nombre de surcharge </label>
+                        </div>
+                      </div>
+                    
+                  </div>
+                
+                     
+             
+
+
+              
+              
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="button" (click)="creebus()" class="btn btn-warning btn-block mb-4 me-3">Confirmer l'ajout</button>
+                
+                <button routerLink="/ecole/bus/listbus" data-mdb-ripple-init type="reset" class="btn btn-light btn-block mb-4">Annuler l'ajout</button>
+
+            </form>
+        </div>
+    </div>
+
+  
+    
+</div>

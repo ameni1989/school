@@ -1,0 +1,114 @@
+<div class="container-fluid">
+  <div class="row mb-2 mt-2">
+    <div class="col">
+      <h3 class="text-orange text-start">Formulaire d'ajout d'un parent</h3>
+    </div>
+  </div>
+
+  <div class="row mt-2 justify-content-center">
+    <div class="col-12">
+      <form>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-2">
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="nom"
+                [(ngModel)]="nvparent.nomprenom"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1"
+                >Nom et Prénom</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic phone number inputs -->
+        <div
+          class="row mb-2"
+          *ngFor="let phone of nvparent.telephones; let i = index"
+        >
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                [(ngModel)]="nvparent.telephones[i]"
+                type="tel"
+                id="telephone{{ i }}"
+                class="form-control"
+              />
+              <label class="form-label" for="telephone{{ i }}"
+                >Téléphone {{ i + 1 }}</label
+              >
+            </div>
+          </div>
+          <div class="col-auto">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="supprimerTelephone(i)"
+            >
+              Supprimer
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          (click)="ajouterTelephone()"
+          class="btn btn-primary mb-3"
+        >
+          Ajouter un numéro de téléphone
+        </button>
+
+        <!-- Email and Address inputs -->
+        <div class="row mb-2">
+          <div class="col-6">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="email"
+                [(ngModel)]="nvparent.email"
+                type="email"
+                id="form6Example2"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example2">Email</label>
+            </div>
+          </div>
+          <div class="col-6">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="adresse"
+                [(ngModel)]="nvparent.adresse"
+                type="text"
+                id="form6Example3"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example3">Adresse</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit and Cancel buttons -->
+        <button
+          (click)="ajouterParent()"
+          data-mdb-ripple-init
+          type="button"
+          class="btn btn-warning btn-block mb-4 me-3"
+        >
+          Confirmer l'ajout
+        </button>
+
+        <button
+          routerLink="/ecole/parent/listparent"
+          data-mdb-ripple-init
+          type="reset"
+          class="btn btn-light btn-block mb-4"
+        >
+          Annuler l'ajout
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

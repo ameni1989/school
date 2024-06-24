@@ -1,0 +1,321 @@
+<div class="container-fluid">
+  <div class="row mb-2 mt-2 mb-0">
+    <div class="col-lg-6 col-8">
+      <h3 class="text-orange text-start">Elèves</h3>
+    </div>
+    <div class="col-lg-2 col-3 p-0">
+      <img src="assets/images/eleves.png" alt="" class="img-fluid" />
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-3">
+      <button
+        class="btn btn-warning text-white fw-bold"
+        routerLink="/ecole/eleve/ajouteleve"
+      >
+        <i class="bi bi-person-plus fs-4 me-2"></i>
+        <span>Ajouter un élève</span>
+      </button>
+    </div>
+    <!-- <div class="col-3">
+            <div class="app-search dropdown d-none d-lg-block">
+              <form>
+                  <div class="input-group">
+                      <input name="chercher" [(ngModel)]="chercher" type="text" class="form-control dropdown-toggle" placeholder="chercher..."
+                          id="top-search">
+                      <span class="mdi mdi-magnify search-icon"></span>
+                  </div>
+              </form>
+
+          </div>
+
+          </div> -->
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="table-responsive-sm">
+        <table class="table align-middle mb-2 bg-white">
+          <thead class="bg-warning text-white">
+            <tr>
+              <th>Nom et Prenom</th>
+              <th>Photo</th>
+              <th>Parent</th>
+              <th>Classe</th>
+              <th>Arret ramassage</th>
+              <th>heure ramassage</th>
+              <th>Arret retour</th>
+              <th>heure retour</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let item of eleves
+                  | pipe : base.chercher
+                  | paginate
+                    : {
+                        id: 'pagination1',
+                        itemsPerPage: itemsPerPage,
+                        currentPage: paginate
+                      };
+                let i = index
+              "
+            >
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="ms-3">
+                    <p class="fw-bold">{{ item.nomprenom }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <img
+                  [src]="'http://127.0.0.1:3000/getimage/' + item.image"
+                  alt=""
+                  class="img-eleve"
+                />
+              </td>
+              <td>
+                <p class="fw-normal">{{ item.parent[0].nomprenom }}</p>
+              </td>
+              <td>
+                <p class="fw-normal">{{ item.classe }}</p>
+              </td>
+
+              <td
+                *ngIf="
+                  item.ramassage && item.ramassage.length > 0;
+                  else noArret
+                "
+              >
+                {{ item.ramassage[0].nom }}
+              </td>
+              <ng-template #noArret>
+                <td>pas d'arret</td>
+              </ng-template>
+              <td>{{ item.heureramassage }}</td>
+
+              <td *ngIf="item.retour && item.retour.length > 0; else noArret">
+                {{ item.retour[0].nom }}
+              </td>
+              <ng-template #noArret>
+                <td>pas d'arret</td>
+              </ng-template>
+              <td>{{ item.heureretour }}</td>
+              <td>
+                <button
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  type="button"
+                  (click)="eleveadmodifier(item._id)"
+                  class="btn btn-warning rounded-circle ps-2 pe-2 me-2"
+                >
+                  <i class="bi bi-person-gear fs-4 fw-bold"></i>
+                </button>
+                <button
+                  (click)="supprimer(item._id)"
+                  type="button"
+                  class="btn btn-light rounded-circle ps-2 pe-2"
+                >
+                  <i class="bi bi-person-dash fs-4 fw-bold"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-2">
+          <select class="form-select w-75" [(ngModel)]="itemsPerPage">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+          </select>
+        </div>
+        <div class="col">
+          <pagination-controls
+            class="pag text-end"
+            id="pagination1"
+            (pageChange)="paginate = $event"
+            previousLabel="Précédent"
+            nextLabel="Suivant"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">
+          Modification élève
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body bg-warning">
+        <div class="row mt-2 justify-content-center">
+          <div class="col-12">
+            <form>
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row mb-2">
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input
+                      name="eleve"
+                      [(ngModel)]="nveleve.nomprenom"
+                      type="text"
+                      id="form6Example1"
+                      class="form-control"
+                    />
+                    <label class="form-label" for="form6Example1"
+                      >Nom et Prenom</label
+                    >
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input
+                      name="image"
+                      type="file"
+                      id="form6Example1"
+                      class="form-control"
+                      (change)="selectimage($event)"
+                    />
+                    <label class="form-label" for="form6Example1">Photo</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <select
+                      name="parent"
+                      [(ngModel)]="idparent"
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option *ngFor="let item of parents" [value]="item._id">
+                        {{ item.nomprenom }} {{ item.telephone }}
+                      </option>
+                    </select>
+                    <label class="form-label" for="form6Example1"
+                      >Parent
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-2">
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input
+                      name="classe"
+                      [(ngModel)]="nveleve.classe"
+                      type="text"
+                      id="form6Example1"
+                      class="form-control"
+                    />
+                    <label class="form-label" for="form6Example1">Classe</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <select
+                      [(ngModel)]="idramassage"
+                      name="ramassage"
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option *ngFor="let item of ramassage" [value]="item._id">
+                        {{ item.nom }}
+                      </option>
+                    </select>
+                    <label class="form-label" for="form6Example1"
+                      >arret de ramassage
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <select
+                      name="retour"
+                      [(ngModel)]="idretour"
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option *ngFor="let item of retour" [value]="item._id">
+                        {{ item.nom }}
+                      </option>
+                    </select>
+                    <label class="form-label" for="form6Example1"
+                      >arret de retour
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input
+                      name="heureramassage"
+                      [(ngModel)]="nveleve.heureramassage"
+                      type="text"
+                      id="form6Example1"
+                      class="form-control"
+                    />
+                    <label class="form-label" for="form6Example1"
+                      >heure ramassage</label
+                    >
+                  </div>
+                </div>
+                <div class="col">
+                  <div data-mdb-input-init class="form-outline">
+                    <input
+                      name="heureretour"
+                      [(ngModel)]="nveleve.heureretour"
+                      type="text"
+                      id="form6Example1"
+                      class="form-control"
+                    />
+                    <label class="form-label" for="form6Example1"
+                      >heure retour</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          annuler
+        </button>
+        <button
+          (click)="modifiereleve()"
+          type="button"
+          class="btn btn-warning"
+          data-bs-dismiss="modal"
+        >
+          confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.bg-orange{
+    background-color: #ffbc00;
+}
+.page{
+    width:100%;
+    height: 75vh;
+    background-color: white;
+    margin: 0px 0px;
+    padding: 20px 0px;
+
+}
+.card{
+    border-radius: 10px;
+    margin: 20px 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px 5px;
+
+}
+.lien{
+    cursor: pointer;
+    color: #ffbc00;
+  }
+
+  .img-eleve{
+    width: 30px;
+}
+.img-eleve:hover{
+    width: 100px;
+    cursor: pointer;
+}

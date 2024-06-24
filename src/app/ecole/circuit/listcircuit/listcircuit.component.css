@@ -1,0 +1,19 @@
+.bg-orange{
+    background-color: #ffbc00;
+}
+.text-orange{
+    color: #ffbc00;
+}
+
+.card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.pag /deep/ .ngx-pagination .current {
+    background: #ffbc00;
+  }
+
+  .lien{
+    cursor: pointer;
+    color: #ffbc00;
+  }

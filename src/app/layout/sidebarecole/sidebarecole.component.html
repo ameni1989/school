@@ -1,0 +1,200 @@
+  <!-- ========== Left Sidebar Start ========== -->
+  <div class="leftside-menu left-s bg-black ">
+
+    <!-- LOGO -->
+    <a href="index.html" class="logo text-center  bg-black">
+        <span class="logo-lg bg-black">
+            <img src="assets/images/logo.png" alt="" height="16">
+        </span>
+        <span class="logo-sm bg-black">
+            <img src="assets/images/logo_sm.png" alt="" height="16">
+        </span>
+    </a>
+    <!--- Sidemenu -->
+    <div class="h-100" id="leftside-menu-container" data-simplebar>
+
+         <ul class="side-nav mt-5">
+
+            <!-- Tableau de bord -->
+            <li class="side-nav-item">
+                <a routerLink="dash" data-bs-toggle="collapse" class="side-nav-link hover-bg">
+                    <i class="bi bi-clipboard2-data"></i>
+                    <span> Tableau de bord </span>
+                </a>
+
+            </li>
+            <!-- live -->
+            <li class="side-nav-item">
+                <a routerLink="suivi" data-bs-toggle="collapse" class="side-nav-link hover-bg">
+                    <i class="bi bi-eye"></i>
+                    <span> Vue en temps réel </span>
+                </a>
+
+            </li>
+            <!-- circuit et arret -->
+            <!-- <li class="side-nav-item">
+                <div class="dropdown">
+                <a class="side-nav-link bg-black hover-bg" id="dropdownMenuButton1" aria-expanded="false">
+                    <i class="bi bi-geo-alt"></i>
+                    <span>Arrets et circuits</span>
+                </a>
+                <ul class="dropdown-menu bg-black ms-5 ps-0 pe-0 ">
+                    <li class="side-nav-item mb-2 hover-bg">
+                    <a routerLink="arret/listarret" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-geo-alt ms-0 me-0"></i>
+                        <span>Gestion des Arrets </span>
+                    </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a routerLink="circuit/listcircuit" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                            <i class="bi bi-map ms-0 me-0"></i>
+                        <span>Gestion des circuits </span>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </li> -->
+            <!-- agent et bus -->
+            <!-- <li class="side-nav-item">
+                <div class="dropdown">
+                <a class="side-nav-link bg-black hover-bg" id="dropdownMenuButton1" aria-expanded="false">
+                    <i class="bi bi-bus-front"></i>
+                    <span>Agents et Bus</span>
+                </a>
+                <ul class="dropdown-menu bg-black ms-5 ps-0 pe-0 ">
+                    <li class="side-nav-item mb-2 hover-bg">
+                    <a routerLink="agent/listagent" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-person-workspace ms-0 me-0"></i>
+                        <span> Gestion des Agents </span>
+                    </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a routerLink="bus/listbus" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                            <i class="bi bi-bus-front ms-0 me-0"></i>
+                        <span> Gestion des Bus </span>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </li> -->
+            <!-- parent et eleve -->
+            <!-- <li class="side-nav-item">
+                <div class="dropdown">
+                <a class="side-nav-link bg-black hover-bg" id="dropdownMenuButton1" aria-expanded="false">
+                    <i class="bi bi-people"></i>
+                    <span>Parents et élèves</span>
+                </a>
+                <ul class="dropdown-menu bg-black ms-5 ps-0 pe-0 ">
+                    <li class="side-nav-item mb-2 hover-bg">
+                    <a routerLink="eleve/listeleve" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-person-vcard ms-0 me-0"></i>
+                        <span> Gestion des élèves </span>
+                    </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a routerLink="parent/listparent" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                            <i class="bi bi-person-badge ms-0 me-0"></i>
+                        <span> Gestion des parents </span>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </li> -->
+              <!-- historiques -->
+            <li class="side-nav-item">
+                <a routerLink="historique" data-bs-toggle="collapse" class="side-nav-link hover-bg">
+                    <i class="bi bi-clock-history"></i>
+                    <span> Historiques </span>
+                </a>
+
+            </li>
+
+            <li class="side-nav-item">
+                <a (click)="toggleIcon()" class="side-nav-link bg-black hover-bg " data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+                    <span>
+                        <i [ngClass]="{'bi bi-caret-right': !isLiked, 'bi bi-caret-down': isLiked}"></i>
+                        <span class="me-2">Parents et élèves</span>
+                    </span>
+                    <i class="bi bi-people"></i>
+                     </a>
+                <ul class="  collapse" id="collapseExample1">
+                  <li class="side-nav-item hover-bg ">
+                    <a routerLink="eleve/listeleve"  class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-person-vcard ms-0 me-0"></i>
+                        <span> Gestion des élèves </span>                   
+                     </a>
+                  </li>
+                  <li class="side-nav-item hover-bg">
+                    <a routerLink="parent/listparent" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-person-badge ms-0 me-0"></i>
+                        <span> Gestion des parents </span>                   
+                     </a>
+                                      
+                    </li>
+                </ul>
+              </li>
+
+              <li class="side-nav-item">
+                <a (click)="toggleIcon2()" class="side-nav-link bg-black hover-bg " data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                    <span >
+                    <i [ngClass]="{'bi bi-caret-right': !isLiked2, 'bi bi-caret-down': isLiked2}"></i>
+                    <span class="me-2">Arrets et circuits</span>
+                    </span>
+                    <i class="bi bi-geo-alt"></i> 
+                </a>
+                <ul class="  collapse" id="collapseExample2">
+                  <li class="side-nav-item hover-bg ">
+                    <a routerLink="arret/listarret" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-geo-alt ms-0 me-0"></i>
+                        <span>Gestion des Arrets </span>                
+                     </a>
+                  </li>
+                  <li class="side-nav-item hover-bg">
+                    <a routerLink="circuit/listcircuit" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-map ms-0 me-0"></i>
+                        <span>Gestion des circuits </span>                  
+                     </a>
+                                      
+                    </li>
+                </ul>
+              </li>
+
+              <li class="side-nav-item">
+                <a (click)="toggleIcon3()" class="side-nav-link bg-black hover-bg " data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+                    <span >
+                        <i [ngClass]="{'bi bi-caret-right': !isLiked3, 'bi bi-caret-down': isLiked3}"></i>
+                        <span class="me-2">Agents et Bus</span>
+                        </span>
+                     <i class="bi bi-bus-front"></i>
+                     </a>
+
+                <ul class="  collapse" id="collapseExample3">
+                  <li class="side-nav-item hover-bg ">
+                    <a routerLink="agent/listagent" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-person-workspace ms-0 me-0"></i>
+                        <span> Gestion des Agents </span>                  
+                     </a>
+                  </li>
+                  <li class="side-nav-item hover-bg">
+                    <a routerLink="bus/listbus" class="side-nav-link bg-black hover-bg w-100 ps-1 pe-0">
+                        <i class="bi bi-bus-front ms-0 me-0"></i>
+                        <span> Gestion des Bus </span>                  
+                     </a>
+                                      
+                    </li>
+                </ul>
+              </li>
+
+      
+            
+
+
+        </ul>
+
+        
+
+    </div>
+    <!-- Sidebar -left -->
+
+</div>
+<!-- Left Sidebar End -->

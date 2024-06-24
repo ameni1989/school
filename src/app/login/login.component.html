@@ -1,0 +1,51 @@
+<section style="background-image: url(assets/images/bgjaune.jpg);height: 100vh;
+background-size: cover;">
+ 
+   <div class="row justify-content-center align-content-center h-100">
+
+    <div class="col-lg-3 col-6  p-4 glass">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="text-center mb-4 bg-black" style="border-radius: 50%;">
+                    <img src="assets/images/login.png" width="100%" alt="">
+                  </div>
+            </div>
+        </div>
+        <form class="">
+        
+          
+    
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            
+              <input  name="email" [(ngModel)]="user.email" type="email" id="form6Example1" class="form-control champs"    />
+    
+            <label class="form-label" for="form3Example3">adresse email</label>
+          </div>
+    
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            
+              <input (keydown.enter)="login()" name="password" [(ngModel)]="user.password" type="password" id="form6Example1" class="form-control champs"/>
+            <label class="form-label" for="form3Example4">mot de passe</label>
+          </div>
+    
+    
+          <div class="d-flex justify-content-center text-lg-start mt-4 pt-2 ">
+            <button (click)="login()" type="button" class="btn btn-warning rounded-pill fw-bold text-black"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">se connecter</button>
+            
+          </div>
+    
+        </form>
+      </div>
+
+   </div>
+
+   
+
+
+
+
+    
+  </section>

@@ -1,0 +1,191 @@
+<div class="container-fluid">
+  <div class="row mb-2 mt-2">
+    <div class="col-lg-6 col-8">
+      <h3 class="text-orange text-start">Bus</h3>
+    </div>
+    <div class="col-lg-2 col-4">
+      <img src="assets/images/bus.png" alt="" class="img-fluid" />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-lg-6 col-8">
+      <button
+        class="btn btn-warning text-white fw-bold"
+        routerLink="/ecole/bus/ajoutbus"
+      >
+        <i class="bi bi-plus-lg fs-4 me-2"></i>
+        <span>Ajouter un bus</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="table-responsive-sm">
+        <table class="table align-middle mb-2 bg-white">
+          <thead class="bg-warning text-white">
+            <tr>
+              <th>Marque</th>
+              <th>Numéro de serie</th>
+              <th>Couleur</th>
+              <th>Nombre de place</th>
+              <th>Nombre de surcharge</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let item of bus
+                  | pipe : _base.chercher
+                  | paginate
+                    : {
+                        id: 'pagination1',
+                        itemsPerPage: 3,
+                        currentPage: paginate
+                      };
+                let i = index
+              "
+            >
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="ms-3">
+                    <p class="fw-bold">{{ item.marque }}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p class="fw-normal">{{ item.serie }}</p>
+              </td>
+              <td>
+                <p class="fw-normal">{{ item.couleur }}</p>
+              </td>
+              <td>
+                <p class="fw-normal">{{ item.place }}</p>
+              </td>
+              <td>
+                <p class="fw-normal">{{ item.surcharge }}</p>
+              </td>
+
+              <td>
+                <button
+                  (click)="busadmodifier(item._id)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  type="button"
+                  class="btn btn-warning rounded-circle ps-2 pe-2 me-2"
+                >
+                  <i class="bi bi-gear fs-4 fw-bold"></i>
+                </button>
+                <button
+                  (click)="supprimer(item._id)"
+                  type="button"
+                  class="btn btn-light rounded-circle ps-2 pe-2"
+                >
+                  <i class="bi bi-trash3 fs-4 fw-bold"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pagination-controls
+        class="pag text-end"
+        id="pagination1"
+        (pageChange)="paginate = $event"
+        previousLabel="Précédent"
+        nextLabel="Suivant"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">
+          Modification bus
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body bg-warning">
+        <div class="row pt-3 pb-3">
+          <div class="col text-dark">
+            marque
+            <input
+              type="text"
+              placeholder="nom"
+              class="me-1 form-control mb-2"
+              [(ngModel)]="nvbus.marque"
+            />
+          </div>
+          <div class="col text-dark">
+            serie
+            <input
+              [(ngModel)]="nvbus.serie"
+              class="me-1 form-control mb-2"
+              type="text"
+              placeholder="telephone"
+            />
+          </div>
+          <div class="col text-dark">
+            couleur
+            <input
+              type="text"
+              placeholder="nom"
+              class="me-1 form-control mb-2"
+              [(ngModel)]="nvbus.couleur"
+            />
+          </div>
+        </div>
+        <div class="row pt-3 pb-3">
+          <div class="col text-dark">
+            Nombre de place
+            <input
+              type="text"
+              placeholder="nom"
+              class="me-1 form-control mb-2"
+              [(ngModel)]="nvbus.place"
+            />
+          </div>
+          <div class="col text-dark">
+            Nombre de surcharge
+            <input
+              [(ngModel)]="nvbus.surcharge"
+              class="me-1 form-control mb-2"
+              type="text"
+              placeholder="telephone"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          annuler
+        </button>
+        <button
+          (click)="modifierbus()"
+          type="button"
+          class="btn btn-warning"
+          data-bs-dismiss="modal"
+        >
+          confirmer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

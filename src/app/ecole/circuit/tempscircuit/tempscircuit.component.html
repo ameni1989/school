@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row justify-content-center h-75">
+    <div class="col-2">
+      <div class="row mb-2">
+        <h3 class="text-orange">circuits</h3>
+      </div>
+      <!-- 1er essai ajouter circuit et date manuel -->
+      <!-- <div class="row mb-3 border p-2">
+          <label for="">circuit</label>
+          <select class="form-select" aria-label="Default select example" name="title" [(ngModel)]="title">
+            <option [ngValue]="null" disabled selected>Choisissez un circuit</option>
+            <option ngValue="C 1">Circuit 1</option>
+            <option ngValue="C 2">Circuit 2</option>
+            <option ngValue="C 3">Circuit 3</option>
+          </select>
+          
+            <label for="">date et heure debut</label>
+          <mat-form-field>
+            <input matInput type="datetime-local" placeholder=" date debut" name="debut" [(ngModel)]="debut" >
+          </mat-form-field>
+          <label for="">date et heure fin</label>
+          <mat-form-field>
+            <input matInput type="datetime-local" placeholder=" date debut" name="fin" [(ngModel)]="fin" >
+          </mat-form-field>
+            <button class="btn btn-warning" (click)="addEvent()">ajouter </button>
+
+      
+            </div> -->
+      <!-- 2eme essai drag an drop -->
+      <!-- <div class="row mt-5">
+                <div *ngFor="let circuit of circuits" class="external-event" #externalEvent>{{ circuit.name }}</div>
+              </div> -->
+      <!-- <button class="btn btn-danger" *ngIf="selectedEvent" (click)="removeSelectedEvent()">Supprimer le circuit sélectionné</button> -->
+      <!-- <button (click)="duplicateEventsForAllWeeks()">Dupliquer pour toutes les semaines</button> -->
+    </div>
+    <div class="col-12">
+      <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+    </div>
+  </div>
+</div>

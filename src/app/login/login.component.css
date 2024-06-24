@@ -1,0 +1,13 @@
+.glass{
+
+    background: rgba(255, 255, 255, 0.2); /* Couleur de fond avec une transparence de 20% */
+    border-radius: 15px 25px; /* Coins arrondis */
+    padding: 20px; /* Marge intérieure pour le contenu */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    backdrop-filter: blur(8px);
+}
+.champs{
+    background: rgba(255, 255, 255, 0.2); /* Couleur de fond avec une transparence de 20% */
+     backdrop-filter: blur(8px);  
+     border: none;
+}

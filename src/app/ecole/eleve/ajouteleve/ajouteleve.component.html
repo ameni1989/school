@@ -1,0 +1,155 @@
+<div class="container-fluid">
+  <div class="row mb-2 mt-2">
+    <div class="col">
+      <h3 class="text-orange text-start">Formulaire d'ajout d'un élève</h3>
+    </div>
+  </div>
+
+  <div class="row mt-2 justify-content-center">
+    <div class="col-12">
+      <form>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-2">
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="eleve"
+                [(ngModel)]="nomeleve"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1"
+                >Nom et Prenom</label
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="image"
+                type="file"
+                id="form6Example1"
+                class="form-control"
+                (change)="selectimage($event)"
+              />
+              <label class="form-label" for="form6Example1">Photo</label>
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <select
+                name="parent"
+                [(ngModel)]="nomparent"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option *ngFor="let item of parents" [value]="item._id">
+                  {{ item.nomprenom }} {{ item.telephone }}
+                </option>
+              </select>
+              <label class="form-label" for="form6Example1">Parent </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="classe"
+                [(ngModel)]="classe"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1">Classe</label>
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <select
+                [(ngModel)]="arretramassage"
+                name="ramassage"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option *ngFor="let item of ramassage" [value]="item._id">
+                  {{ item.nom }}
+                </option>
+              </select>
+              <label class="form-label" for="form6Example1"
+                >arret de ramassage
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <select
+                name="retour"
+                [(ngModel)]="arretretour"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option *ngFor="let item of retour" [value]="item._id">
+                  {{ item.nom }}
+                </option>
+              </select>
+              <label class="form-label" for="form6Example1"
+                >arret de retour
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="heureramassage"
+                [(ngModel)]="heureramassage"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1"
+                >heure ramassage</label
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="heureretour"
+                [(ngModel)]="heureretour"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1">heure retour</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <button
+          (click)="ajouter()"
+          data-mdb-ripple-init
+          type="button"
+          class="btn btn-warning btn-block mb-4 me-3"
+        >
+          Confirmer l'ajout
+        </button>
+
+        <button
+          routerLink="/ecole/eleve/listeleve"
+          data-mdb-ripple-init
+          type="reset"
+          class="btn btn-light btn-block mb-4"
+        >
+          Annuler l'ajout
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

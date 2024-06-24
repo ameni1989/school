@@ -1,0 +1,27 @@
+.bg-orange{
+    background-color: #ffbc00;
+}
+.text-orange{
+    color: #ffbc00;
+}
+
+.card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.pag /deep/ .ngx-pagination .current {
+    background: #ffbc00;
+  }
+  
+  .custom-marker {
+    width: 20px;
+    height: 20px;
+    background-color: #ffbc00; /* Changez la couleur selon vos besoins */
+    border-radius: 50%;
+    border: 2px solid white; /* Bordure blanche (optionnelle) */
+  }
+  
+  .label{
+    color: #ffbc00 !important;
+    transform: translateY(-30px) !important;
+  }

@@ -1,0 +1,56 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-orange"> Vue en temps réel</h3>
+        </div>
+    </div>
+    <div class="row mt-3 justify-content-between" >
+        <div class="col-12 col-lg-8 p-0">
+            <!-- marker 35.66991038276349   10.101576000452042 -->
+                            <!-- <map-marker class="custom-marker" *ngIf="markerPosition" [position]="markerPosition" ></map-marker> -->
+
+            <google-map  width="100%" (mapClick)="click($event)" [options]="options" [center]="center" [zoom]="zoom">
+                  <!-- Ajoutez des marqueurs ici -->
+                  <map-marker  *ngFor="let marker of markers" [options]="marker.options" [position]="marker.position" [label]="marker.label"></map-marker>
+                  <map-marker  *ngFor="let marker of buses" [visible]="marker.label.text === selectedBus" [options]="marker.options" [position]="marker.position" [label]="marker.label"></map-marker>
+
+                  <!-- Ajoutez autant de marqueurs que nécessaire -->
+                  <!-- <map-polyline [options]="polylineOptions"></map-polyline> -->
+                </google-map>
+        </div>
+        <div class="col-12 col-lg-4 border border-2 rounded">
+            <div class="row p-2">
+                <div class="col ">
+                    <select class="form-select" [(ngModel)]="selectedBus" aria-label="Sélectionner un bus">
+                        <option value="" selected disabled>Sélectionner un bus</option>
+                        <option *ngFor="let bus of buses" [value]="bus.label.text">{{ bus.label.text }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-5 m-2 border border-2 rounded">
+                <div class="col">
+                    <div class="row mt-2 mb-3">
+                        <label for=""> bus :</label>
+                    </div>
+                    <div class="row mb-3">
+                        <label for=""> agent :</label>
+                    </div>
+                    <div class="row mb-3">
+                        <label for=""> circuit :</label>
+                    </div>
+                    <div class="row mb-3">
+                        <label for=""> arret de depart :</label>
+                    </div>
+                    <div class="row mb-3">
+                        <label for=""> arret d'arrivée :</label>
+                    </div>
+                 
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

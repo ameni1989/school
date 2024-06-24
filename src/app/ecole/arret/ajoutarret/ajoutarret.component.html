@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="row mb-2 mt-2">
+    <div class="col">
+      <h3 class="text-orange text-start">Ajout d'un arret</h3>
+    </div>
+  </div>
+
+  <div class="row mt-2 justify-content-center">
+    <div class="col-lg-6 col-12">
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div data-mdb-input-init class="form-outline mb-3">
+        <input
+          [(ngModel)]="nomarret"
+          type="text"
+          id="form6Example1"
+          class="form-control"
+        />
+        <label class="form-label" for="form6Example1">Nom</label>
+      </div>
+      <div data-mdb-input-init class="form-outline mb-3">
+        <input
+          [(ngModel)]="latitude"
+          type="text"
+          id="form6Example1"
+          class="form-control"
+        />
+        <label class="form-label" for="form6Example1">Lattitude</label>
+      </div>
+      <div data-mdb-input-init class="form-outline mb-3">
+        <input
+          [(ngModel)]="longitude"
+          type="text"
+          id="form6Example1"
+          class="form-control"
+        />
+        <label class="form-label" for="form6Example1">Longitude </label>
+      </div>
+      <!-- Submit button -->
+      <button
+        data-mdb-ripple-init
+        type="button"
+        (click)="creearret()"
+        class="btn btn-warning btn-block mb-4 me-3"
+      >
+        Confirmer l'ajout
+      </button>
+
+      <button
+        routerLink="/ecole/arret/listarret"
+        data-mdb-ripple-init
+        type="reset"
+        class="btn btn-light btn-block mb-4"
+      >
+        Annuler l'ajout
+      </button>
+    </div>
+
+    <div class="col-lg-6 col-12">
+      <!-- <form (ngSubmit)="geocodeCity($event)">
+           
+            <div class="row justify-content-between">
+              <div class="col">
+            <input placeholder="nom de la ville" class="form-control" type="text" id="city" [(ngModel)]="cityName" name="city" required />
+      
+              </div>
+              <div class="col text-end pe-0">
+                <button class="btn btn-warning" type="submit">Trouver la ville sur la carte</button>
+
+              </div>
+            </div>
+            
+          </form> -->
+      <google-map
+        (mapClick)="click($event)"
+        [options]="options"
+        [center]="center"
+        [zoom]="zoom"
+      >
+        <!-- <map-marker  *ngIf="markerPosition" [position]="markerPosition" ></map-marker> -->
+        <map-marker
+          *ngFor="let marker of markers"
+          [options]="marker.options"
+          (mapClick)="click($event)"
+          [position]="marker.position"
+          [label]="marker.label"
+        ></map-marker>
+      </google-map>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,166 @@
+<div class="container">
+  <div class="row mt-3">
+    <h3 class="text-warning">Ajout d'une nouvelle école</h3>
+  </div>
+  <div class="row mt-2 justify-content-center">
+    <div class="col-6">
+      <form>
+        <div class="alert alert-danger" *ngIf="message">{{ message }}</div>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-2">
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="nom"
+                [(ngModel)]="ecole.nom"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1"
+                >Nom de l'école</label
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                type="file"
+                id="form6Example2"
+                class="form-control"
+                (change)="selectimage($event)"
+              />
+              <label class="form-label" for="form6Example2"> logo</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="email"
+                [(ngModel)]="ecole.email"
+                type="email"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1"
+                >Email administrateur</label
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="password"
+                [(ngModel)]="ecole.password"
+                type="password"
+                id="form6Example2"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example2">
+                Mot de passe</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="telephone1"
+                [(ngModel)]="ecole.telephone1"
+                type="tel"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1">Telephone 1</label>
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="telephone2"
+                [(ngModel)]="ecole.telephone2"
+                type="tel"
+                id="form6Example2"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example2"> Telephone 2</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div data-mdb-input-init class="form-outline mb-2">
+          <input
+            name="adresse"
+            [(ngModel)]="ecole.adresse"
+            type="text"
+            id="form6Example4"
+            class="form-control"
+          />
+          <label class="form-label" for="form6Example4">Addresse</label>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="latitude"
+                [(ngModel)]="latitude"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1">Lattitude</label>
+            </div>
+          </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="longitude"
+                [(ngModel)]="longitude"
+                type="text"
+                id="form6Example2"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example2"> Longitude </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <button
+          data-mdb-ripple-init
+          (click)="creerecole()"
+          type="button"
+          class="btn btn-warning btn-block mb-4 me-3"
+        >
+          Confirmer l'ajout
+        </button>
+        <button
+          data-mdb-ripple-init
+          type="reset"
+          class="btn btn-light btn-block mb-4"
+        >
+          Annuler l'ajout
+        </button>
+      </form>
+    </div>
+    <div class="col-6">
+      <google-map
+        (mapClick)="click($event)"
+        [options]="options"
+        [center]="center"
+        [zoom]="zoom"
+      >
+        <map-marker
+          class="custom-marker"
+          *ngIf="markerPosition"
+          [position]="markerPosition"
+        ></map-marker>
+      </google-map>
+    </div>
+  </div>
+</div>
