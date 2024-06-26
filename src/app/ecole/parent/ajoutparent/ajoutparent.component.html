@@ -24,10 +24,24 @@
               >
             </div>
           </div>
+          <div class="col">
+            <div data-mdb-input-init class="form-outline">
+              <input
+                name="tel"
+                [(ngModel)]="nvparent.telephone"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+              <label class="form-label" for="form6Example1"
+                >Nom et Prénom</label
+              >
+            </div>
+          </div>
         </div>
 
         <!-- Dynamic phone number inputs -->
-        <div
+        <!-- <div
           class="row mb-2"
           *ngFor="let phone of nvparent.telephones; let i = index"
         >
@@ -60,7 +74,7 @@
           class="btn btn-primary mb-3"
         >
           Ajouter un numéro de téléphone
-        </button>
+        </button> -->
 
         <!-- Email and Address inputs -->
         <div class="row mb-2">
