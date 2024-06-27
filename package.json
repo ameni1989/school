@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "ng-high-memory": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
+    "ng-high-memory-build": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=production",
+    "ng-high-memory-serve": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng serve --configuration=production",
     "start": "ng serve",
-    "build": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build",
-    "watch": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --watch --configuration development",
-    "test": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng test"
+    "build": "ng build --configuration=production",
+    "watch": "ng build --watch --configuration=development",
+    "test": "ng test"
   },
-  
   "private": true,
   "dependencies": {
     "@angular-material-components/datetime-picker": "^16.0.1",
