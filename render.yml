@@ -1,7 +1,0 @@
-services:
-  - name: webadmin
-    buildCommand: "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --configuration=production"
-    startCommand: "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng serve"
-    env:
-      - key: NODE_ENV
-        value: production
