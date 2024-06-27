@@ -17,7 +17,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "src/polyfills.ts"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -26,12 +26,18 @@
             ],
             "styles": [
               "src/styles.css"
-              
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "buildOptimizer": true,
+              "optimization": true,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "outputHashing": "all",
               "budgets": [
                 {
                    "type": "initial",
@@ -42,8 +48,8 @@
                    "type": "anyComponentStyle",
                    "maximumWarning": "300kb",
                    "maximumError": "300kb"
-                }],
-              "outputHashing": "all"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,

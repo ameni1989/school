@@ -10,6 +10,9 @@
     "mserve":"set NODE_OPTIONS=--max_old_space_size=8192 & ng serve --open"
 
   },
+
+  
+  
   "private": true,
   "dependencies": {
     "@angular-material-components/datetime-picker": "^16.0.1",
