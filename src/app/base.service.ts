@@ -9,7 +9,7 @@ export class BaseService {
   constructor(private http: HttpClient) {}
   chercher: any;
   // urlecole = 'http://127.0.0.1:3000/ecole/';
-  urlecole = 'https://ebus-1.onrender.com/ecole/';
+  urlecole = 'https://ebus-5.onrender.com/ecole/';
 
   afficherecoles() {
     return this.http.get(this.urlecole + 'afficher');
@@ -20,7 +20,7 @@ export class BaseService {
   login(user: any) {
     return this.http.post(this.urlecole + 'login', user);
   }
-  urlparent = 'https://ebus-1.onrender.com/parent/';
+  urlparent = 'https://ebus-5.onrender.com/parent/';
   creeparent(p: any) {
     return this.http.post(this.urlparent + 'creer', p);
   }
@@ -40,7 +40,7 @@ export class BaseService {
     return this.http.put(this.urlparent + 'modifierparent/' + id, b);
   }
 
-  urlarret = 'https://ebus-1.onrender.com/arret/';
+  urlarret = 'https://ebus-5.onrender.com/arret/';
   creearret(a: any) {
     return this.http.post(this.urlarret + 'creer', a);
   }
@@ -57,7 +57,7 @@ export class BaseService {
   modifierarret(id: any, a: any) {
     return this.http.put(this.urlarret + 'modifierarret/' + id, a);
   }
-  urlcircuit = 'https://ebus-1.onrender.com/circuit/';
+  urlcircuit = 'https://ebus-5.onrender.com/circuit/';
   creecircuit(c: any) {
     return this.http.post(this.urlcircuit + 'creer', c);
   }
@@ -83,7 +83,7 @@ export class BaseService {
     return this.http.put(this.urlcircuit + 'modifiercircuit/' + id, c);
   }
 
-  urlinstance = 'https://ebus-1.onrender.com/instancecircuit/';
+  urlinstance = 'https://ebus-5.onrender.com/instancecircuit/';
   creerinstance(inst: any) {
     return this.http.post(this.urlinstance + 'creerinstance', inst);
   }
@@ -109,7 +109,7 @@ export class BaseService {
     return this.http.put(this.urlinstance + 'absenteleveouparent/' + id, e);
   }
 
-  urlbus = 'https://ebus-1.onrender.com/bus/';
+  urlbus = 'https://ebus-5.onrender.com/bus/';
   creebus(b: any) {
     return this.http.post(this.urlbus + 'creer', b);
   }
@@ -126,7 +126,7 @@ export class BaseService {
     return this.http.put(this.urlbus + 'modifierbus/' + id, b);
   }
 
-  urleleve = 'https://ebus-1.onrender.com/eleve/';
+  urleleve = 'https://ebus-5.onrender.com/eleve/';
   creeeleve(e: any) {
     return this.http.post(this.urleleve + 'creer', e);
   }
@@ -154,7 +154,7 @@ export class BaseService {
     return this.http.put(this.urleleve + 'modifiereleve/' + id, e);
   }
 
-  urlagent = 'https://ebus-1.onrender.com/agent/';
+  urlagent = 'https://ebus-5.onrender.com/agent/';
   creeagent(a: any) {
     return this.http.post(this.urlagent + 'creer', a);
   }
@@ -174,7 +174,7 @@ export class BaseService {
     return this.http.put(this.urlagent + 'modifieragent/' + id, a);
   }
 
-  urlmobileparent = 'https://ebus-1.onrender.com/parent_m/';
+  urlmobileparent = 'https://ebus-5.onrender.com/parent_m/';
 
   login_m_p(tel: any) {
     return this.http.post(this.urlmobileparent + 'login', tel);
