@@ -8,9 +8,7 @@ import { Observable } from 'rxjs';
 export class BaseService {
   constructor(private http: HttpClient) {}
   chercher: any;
-  // urlecole = 'http://127.0.0.1:3000/ecole/';
   urlecole = 'https://ebus-1.onrender.com/ecole/';
-
   afficherecoles() {
     return this.http.get(this.urlecole + 'afficher');
   }
