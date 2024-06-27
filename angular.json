@@ -40,14 +40,14 @@
               "outputHashing": "all",
               "budgets": [
                 {
-                   "type": "initial",
-                   "maximumWarning": "4mb",
-                   "maximumError": "5mb"
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
-                   "type": "anyComponentStyle",
-                   "maximumWarning": "300kb",
-                   "maximumError": "300kb"
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "300kb",
+                  "maximumError": "300kb"
                 }
               ]
             },
@@ -59,8 +59,7 @@
               "sourceMap": true,
               "namedChunks": true
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -84,8 +83,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
-              "zone.js",
-              "zone.js/testing"
+              "src/polyfills.ts"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
@@ -100,5 +98,5 @@
         }
       }
     }
-  }
+  },
 }
