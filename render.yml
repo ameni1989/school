@@ -1,0 +1,10 @@
+# Exemple de render.yaml pour un service Angular sur Render
+
+services:
+  - name: webadmin
+    buildCommand:
+      - node --max-old-space-size=4096 ./node_modules/.bin/ng build
+    startCommand: node --max-old-space-size=4096 ./node_modules/.bin/ng serve
+    env:
+      - key: NODE_ENV
+        value: production
